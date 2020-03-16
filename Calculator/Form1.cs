@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace Calculator
 {
-    public partial class Form1 : Form
+    public partial class Form1 :Form
     {
         CalculaterView _calculaterView;
         public Form1()
@@ -31,6 +31,9 @@ namespace Calculator
             this.Height = _calculaterView.MaxHeight + 190;
 
             _calculaterView.ButtonDict["AC"].Click += Test_Click;
+            _calculaterView.ButtonDict["+"].Click += Test_Click;
+
+            CreateSimpleButton();
         }
         private List<List<string>> CreateSignList()
         {
@@ -44,10 +47,26 @@ namespace Calculator
             };
             return list;
         }
+        private void CreateSimpleButton()
+        {
+            int t;
+            foreach (var item in _calculaterView.ButtonDict)
+            {
+                if (int.TryParse(item.Key ,out t))
+                {
+                    item.Value.Click += Display_click;
+                }
+            }
+        }
+
 
         private void Test_Click(object sender ,EventArgs e)
         {
             this.display_textBox.Text = "this is a tset!!!";
+        }
+        private void Display_click(object sender ,EventArgs e)
+        {
+            this.display_textBox.Text += $" {((Button)sender).Text} ";
         }
     }
 }
