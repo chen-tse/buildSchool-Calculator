@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ClassLibrary1;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -31,10 +32,65 @@ namespace Calculator
             this.Height = _calculaterView.MaxHeight + 190;
 
             _calculaterView.ButtonDict["AC"].Click += Test_Click;
-            _calculaterView.ButtonDict["+"].Click += Test_Click;
-
+            _calculaterView.ButtonDict["+"].Click += add;
+            _calculaterView.ButtonDict["-"].Click += less;
+            _calculaterView.ButtonDict["x"].Click += mul;
+            _calculaterView.ButtonDict["÷"].Click += div;
+            _calculaterView.ButtonDict["%"].Click += remainder;
             CreateSimpleButton();
         }
+
+        private void add(object sender, EventArgs e)
+        {
+            var c = new Class1()
+            {
+                 input1 = 10,
+                 input2 = 17
+            };
+            
+            this.display_textBox.Text = $"add: {c.add()}";
+        }
+        private void less(object sender, EventArgs e)
+        {
+            var c = new Class1()
+            {
+                input1 = 10,
+                input2 = 17
+            };
+
+            this.display_textBox.Text = $"less: {c.less()}";
+        }
+        private void mul(object sender, EventArgs e)
+        {
+            var c = new Class1()
+            {
+                input1 = 10,
+                input2 = 17
+            };
+
+            this.display_textBox.Text = $"mul: {c.mul()}";
+        }
+        private void div(object sender, EventArgs e)
+        {
+            var c = new Class1()
+            {
+                input1 = 10,
+                input2 = 20
+            };
+
+            this.display_textBox.Text = $"div: {c.div()}";
+        }
+        private void remainder(object sender, EventArgs e)
+        {
+            var c = new Class1()
+            {
+                input1 = 10,
+                input2 = 3
+            };
+
+            this.display_textBox.Text = $"remainder: {c.remainder()}";
+        }
+
         private List<List<string>> CreateSignList()
         {
             List<List<string>> list = new List<List<string>>()
