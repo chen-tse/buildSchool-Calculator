@@ -38,6 +38,7 @@ namespace Calculator
             _calculaterView.ButtonDict["÷"].Click += div;
             _calculaterView.ButtonDict["%"].Click += remainder;
             CreateSimpleButton();
+
         }
 
         private void add(object sender, EventArgs e)
